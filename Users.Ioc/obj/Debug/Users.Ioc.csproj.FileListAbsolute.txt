@@ -1,0 +1,16 @@
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\bin\Debug\Users.Ioc.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\bin\Debug\Users.Ioc.pdb
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\bin\Debug\DAL.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\bin\Debug\DAL.Interfaces.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\bin\Debug\FinalTask.BLL.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\bin\Debug\FinalTask.BLL.Interfaces.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\bin\Debug\Entities.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\bin\Debug\DAL.Interfaces.pdb
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\bin\Debug\DAL.pdb
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\bin\Debug\FinalTask.BLL.Interfaces.pdb
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\bin\Debug\FinalTask.BLL.pdb
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\bin\Debug\Entities.pdb
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\obj\Debug\Users.Ioc.csprojAssemblyReference.cache
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\obj\Debug\Users.Ioc.csproj.CopyComplete
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\obj\Debug\Users.Ioc.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\Users.Ioc\obj\Debug\Users.Ioc.pdb

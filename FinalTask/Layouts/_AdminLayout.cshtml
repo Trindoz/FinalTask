@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+}
+@section AdminMenu{
+    <li>
+        <label for="check_label3">Action</label>
+        <input id="check_label3" type="checkbox" checked />
+        <div class="block3">
+            <ul class="useraction">
+                <li><a href="~/Pages/Users.cshtml">Change Users</a></li>
+                <li><a href="~/Pages/Analysts.cshtml">Change Analysts</a></li>
+            </ul>
+        </div>
+    </li>
+}
+@RenderBody();

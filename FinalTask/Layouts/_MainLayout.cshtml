@@ -1,0 +1,88 @@
+﻿@using FinalTask.Models
+@{
+    Layout = null;
+    this.PropogateSection("AdminMenu");
+}
+<meta name="viewport" content="width=device-width" />
+<html>
+<head>
+    <title>Responsive Sticky Navbar</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Styles/Header.css" rel="stylesheet" />
+    <link href="~/Styles/Menu.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="menu-icon">
+                    <i class="fa fa-bars fa-2x"></i>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li>
+                            <div class="logo">
+                                STOCKER
+                            </div>
+                        </li>
+                        <li><a href="~/Pages/index.cshtml">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">News</a></li>                      
+                            @RenderSection("UserMenu", required: false)                       
+                            @RenderSection("AnalystMenu", required: false)
+                            @RenderSection("AdminMenu", required: false)
+                        @{ if (!User.Identity.IsAuthenticated)
+                            {
+                        <li>
+                            <label for="check_label">Sign In</label>
+                            <input id="check_label" type="checkbox" checked />
+                            <div class="block">
+                                <ul class="login">
+                                    <li><a id="user" href="~/Pages/Allows/SignAsUser.cshtml">Sign As User</a></li>
+                                    <li><a href="~/Pages/Allows/SignAsAnalyst.cshtml">Sign As Analyst</a></li>
+                                    <li><a href="~/Pages/Allows/SignUpAsUser.cshtml">Sign up as user</a></li>
+                                    <li><a href="~/Pages/Allows/SignUpAsAnalyst.cshtml">Sign up as analyst</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                             }
+                            else {
+                                <li>Hi @User.Identity.Name!</li>
+                                <li><a href="~/Pages/Allows/SignOut.cshtml">Sign Out</a></li> 
+                                }
+                          }
+                    </ul>
+                </div>
+            </nav>
+            @RenderSection("SignAsUser", required: false)
+            @RenderSection("SignAsAnalyst", required: false)
+            @RenderSection("SignUpAsUser", required: false)
+            @RenderSection("SignUpAsAnalyst", required: false)
+        </header>
+        <div class="content">
+            @RenderBody()
+        </div>
+        
+    </div>
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="https://use.fontawesome.com/b51e44fbb2.js"></script>
+    <script>
+    $(document).ready(function() {
+            $(".menu-icon").on("click", function() {
+                  $("nav ul").toggleClass("showing");
+            });
+      });
+
+      // Scrolling Effect
+      $(window).on("scroll", function() {
+            if($(window).scrollTop()) {
+                  $('nav').addClass('black');
+            }
+            else {
+                  $('nav').removeClass('black');
+            }
+      })
+    </script>
+</body>
+</html>

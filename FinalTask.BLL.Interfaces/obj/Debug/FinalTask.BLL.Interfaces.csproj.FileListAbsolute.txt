@@ -1,0 +1,8 @@
+C:\Users\ып\Desktop\FinalTask\FinalTask\FinalTask.BLL.Interfaces\bin\Debug\FinalTask.BLL.Interfaces.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\FinalTask.BLL.Interfaces\bin\Debug\FinalTask.BLL.Interfaces.pdb
+C:\Users\ып\Desktop\FinalTask\FinalTask\FinalTask.BLL.Interfaces\bin\Debug\Entities.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\FinalTask.BLL.Interfaces\bin\Debug\Entities.pdb
+C:\Users\ып\Desktop\FinalTask\FinalTask\FinalTask.BLL.Interfaces\obj\Debug\FinalTask.BLL.Interfaces.csprojAssemblyReference.cache
+C:\Users\ып\Desktop\FinalTask\FinalTask\FinalTask.BLL.Interfaces\obj\Debug\FinalTask.BLL.Interfaces.csproj.CopyComplete
+C:\Users\ып\Desktop\FinalTask\FinalTask\FinalTask.BLL.Interfaces\obj\Debug\FinalTask.BLL.Interfaces.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\FinalTask.BLL.Interfaces\obj\Debug\FinalTask.BLL.Interfaces.pdb

@@ -1,0 +1,33 @@
+﻿.block1 {
+    transition: 0.3s;
+}
+#check_label1 {
+    display: none;
+}
+    #check_label1:checked ~ .block1 {
+        height: 0px;
+        opacity: 0;
+    }
+.useraction {
+    display: inline
+}
+.block2 {
+    transition: 0.3s;
+}
+
+#check_label2 {
+    display: none;
+}
+
+    #check_label2:checked ~ .block2 {
+        height: 0px;
+        opacity: 0;
+    }
+#check_label3 {
+    display: none;
+}
+
+    #check_label3:checked ~ .block3 {
+        height: 0px;
+        opacity: 0;
+    }

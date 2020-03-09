@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+}
+@section  SignAsAnalyst{
+    <form class="form-signin">
+        <div class="sign">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <label for="inputLogin" class="sr-only">Login</label>
+            <input type="email" id="inputLogin" class="form-control" placeholder="Login" required="" autofocus="">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <a href="~/Pages/SignUpAsAnalyst.cshtml">Registration</a>
+        </div>
+    </form>
+}

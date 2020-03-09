@@ -1,0 +1,45 @@
+﻿@using Entities;
+@using Users.Ioc;
+@{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+    int id = Int32.Parse(Request["id"]);
+    var analyst = DependencyResolver.UserLogic.GetById(id);
+    if (IsPost)
+    {
+        string name = Request.Form["name"];
+        string lastname = Request.Form["lastname"];
+        string email = Request.Form["email"];
+        string login = Request.Form["login"];
+        string password = Request.Form["password"];
+        string photo = Request.Form["photo"];
+        DateTime birthday = DateTime.Parse(Request.Form["birthday"]);
+        analyst.Name = name;
+        analyst.LastName = lastname;
+        analyst.EMail = email;
+        analyst.Login = login;
+        analyst.Password = password;
+        analyst.Photo = photo;
+        analyst.Birthday = birthday;
+        DependencyResolver.UserLogic.Update(analyst);
+    }
+    else
+    {
+        <form method="post" action="#">
+            <label for="inputName">Name</label>
+            <input name="name" type="text" id="inputName" required value="@analyst.Name" />
+            <label for="inputLastName">Last Name</label>
+            <input name="lastname" type="text" id="inputLastName" required value="@analyst.LastName" />
+            <label for="inputEmail">Email</label>
+            <input name="email" type="text" id="inputEmail" value="@analyst.EMail" />
+            <label for="inputLogin">Login</label>
+            <input name="login" type="text" id="inputLogin" required value="@analyst.Login" />
+            <label for="inputPassword">Password</label>
+            <input name="password" type="password" id="inputPassword" required value="@analyst.Password" />
+            <label for="inputPhoto">Photo</label>
+            <input name="photo" type="text" id="inputPhoto" value="@analyst.Photo" />
+            <label for="inputBirthday">Birthday</label>
+            <input name="birthday" type="date" id="inputBirthday" required value="@analyst.Birthday.ToString("yyyy-MM-dd")" />
+            <button type="submit">Update</button>
+        </form>
+    }
+}

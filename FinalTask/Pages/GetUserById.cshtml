@@ -1,0 +1,57 @@
+﻿@using Users.Ioc
+@using Entities
+@{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+}
+<form action="~/Pages/GetUserById.cshtml" method="post">
+    <label for="getid">Enter id</label>
+    <input id="getid" type="text" name="id" />
+    <button type="submit">GET</button>
+    </form>
+
+@{
+    if (IsPost)
+    {
+        int id = Int32.Parse(Request.Form["id"]);
+        var logic = DependencyResolver.UserLogic;
+        User item = logic.GetById(id);
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="auto">Photo</th>
+            <th scope="col">Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Age</th>
+            <th scope="col">Login</th>
+            <th scope="col">Password</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+        </tr>
+    </thead>
+    <tbody>                
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        <div>
+                            @{if (item.Photo != null)
+                                { <img style="width:50px;height:50px;" src="@item.Photo" alt="image" />}
+                                else
+                                {<img style="width:50px;height:50px;" src="~/Images/thumbs/thumbnail.jpg" alt="image" />}
+                            }
+                        </div>
+                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Birthday.ToString("yyyy-MM-dd")</td>
+                    <td>@item.Age</td>
+                    <td>@item.Login</td>
+                    <td>@item.Password</td>
+                    <td>@item.EMail</td>
+                    <td>@item.Role</td>
+                </tr>
+    </tbody>
+</table>
+                                    }
+                                }

@@ -1,0 +1,33 @@
+﻿@using FinalTask.Models
+@{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+    if (IsPost)
+    {
+        string login = Request.Form["login"];
+        string password = Request.Form["password"];
+        if (CheckUser.CheckLogin(login) && CheckUser.CheckPassword(password))
+        {
+            FormsAuthentication.SetAuthCookie(login, createPersistentCookie: true);
+            Response.Redirect("~/Pages/Allows/index.cshtml");
+        }
+    }
+}
+
+@section  SignAsUser{  
+        <form method="post" action="#" class="form-signin">
+            <div class="sign">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <label for="inputLogin" class="sr-only">Login</label>
+                <input name="login" type="text" id="inputLogin" class="form-control" placeholder="Login" required="" autofocus="">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <a href="~/Pages/SignUpAsUser.cshtml">Registration</a>
+            </div>
+        </form>  
+    }

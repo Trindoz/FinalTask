@@ -1,0 +1,5 @@
+C:\Users\ып\Desktop\FinalTask\FinalTask\Entities\bin\Debug\Entities.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\Entities\bin\Debug\Entities.pdb
+C:\Users\ып\Desktop\FinalTask\FinalTask\Entities\obj\Debug\Entities.csprojAssemblyReference.cache
+C:\Users\ып\Desktop\FinalTask\FinalTask\Entities\obj\Debug\Entities.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\Entities\obj\Debug\Entities.pdb

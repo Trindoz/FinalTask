@@ -1,0 +1,13 @@
+﻿@using Users.Ioc
+@{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+}
+<ul>
+    @{ 
+        var logic = DependencyResolver.CommonLogic;
+        foreach(var item in logic.GetUserLogins())
+        {
+            <li>@item</li>
+        }
+    }
+</ul>

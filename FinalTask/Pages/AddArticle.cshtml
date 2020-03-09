@@ -1,0 +1,26 @@
+﻿@using Entities;
+@{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+    if (IsPost)
+    {
+        string name = Request.Form["name"];
+        string image = Request.Form["image"];
+        string text = Request.Form["text"];
+        var article = new Article
+        {
+            Name = name,
+            Image = image,
+            //добавить автора
+            Content = text
+    };
+}
+}
+
+<form action="~/Pages/AddArticle.cshtml" method="post">
+    <label for="name">Put a name of your blog</label>
+    <input type="text" name="name" id="name"/>
+    <label for="image">Add photo</label>
+    <input type="file" accept="image/*" name="image" id="image"/>
+    <label for="txet">Share your thoughts...</label>
+    <input type="text" name="text" id="text"/>
+</form>

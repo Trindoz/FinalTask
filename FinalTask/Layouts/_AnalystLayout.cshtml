@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+}
+
+@section AnalystMenu{
+    <li>
+        <label for="check_label2">Action</label>
+        <input id="check_label2" type="checkbox" checked />
+        <div class="block2">
+            <ul class="useraction">
+                <li><a href="~/Pages/UpdateAnalyst.cshtml?id=3">Change Profile</a></li>
+                <li><a href="">Add Article</a></li>
+            </ul>
+        </div>
+    </li>
+}
+@RenderBody();

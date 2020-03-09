@@ -1,0 +1,10 @@
+C:\Users\ып\Desktop\FinalTask\FinalTask\DAL\bin\Debug\DAL.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\DAL\bin\Debug\DAL.pdb
+C:\Users\ып\Desktop\FinalTask\FinalTask\DAL\bin\Debug\DAL.Interfaces.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\DAL\bin\Debug\Entities.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\DAL\bin\Debug\DAL.Interfaces.pdb
+C:\Users\ып\Desktop\FinalTask\FinalTask\DAL\bin\Debug\Entities.pdb
+C:\Users\ып\Desktop\FinalTask\FinalTask\DAL\obj\Debug\FinalTask.DAL.csprojAssemblyReference.cache
+C:\Users\ып\Desktop\FinalTask\FinalTask\DAL\obj\Debug\FinalTask.DAL.csproj.CopyComplete
+C:\Users\ып\Desktop\FinalTask\FinalTask\DAL\obj\Debug\DAL.dll
+C:\Users\ып\Desktop\FinalTask\FinalTask\DAL\obj\Debug\DAL.pdb

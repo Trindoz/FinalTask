@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Layouts/_MainLayout.cshtml";
+}
+
+@section UserMenu{
+    <li>
+        <label for="check_label1">Action</label>
+        <input id="check_label1" type="checkbox" checked />
+        <div class="block1">
+            <ul class="useraction">
+                <li><a href="~/Pages/Users/ChangeProfileUser.cshtml">Change Profile</a></li>
+            </ul>
+        </div>
+    </li>
+}
+@RenderBody();
