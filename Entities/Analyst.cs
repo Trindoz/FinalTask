@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Analyst
+    public class Analyst:IEquatable<Analyst>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -30,5 +30,18 @@ namespace Entities
         public string Role { get { return "Analyst"; } set { } }
         public List<Article> Article { get; set; }
         public int Rating { get; set; }
+
+        public bool Equals(Analyst other)
+        {      
+            if (Object.ReferenceEquals(other, null)) return false;
+            if (Object.ReferenceEquals(this, other)) return true;
+            return Id.Equals(other.Id);
+            
+        }
+        public override int GetHashCode()
+        {
+            int hashAnalystId = Id.GetHashCode();
+            return hashAnalystId;
+        }
     }
 }

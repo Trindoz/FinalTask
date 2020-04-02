@@ -13,8 +13,11 @@ namespace FinalTask.BLL.Interfaces
         bool Delete(int id);
         Analyst Update(Analyst analyst);
         Analyst GetById(int id);
+        List<string> GetLogins();
+        List<string> GetPasswords();
+        List<string> GetEmails();
         IEnumerable<Analyst> GetAll();
-        bool AddArticle(int analystid, Article article);
-        bool DeleteArticle(int analystid, Article article);
+        bool AddArticle(Article article);
+        bool DeleteArticle(Article article);
     }
 }

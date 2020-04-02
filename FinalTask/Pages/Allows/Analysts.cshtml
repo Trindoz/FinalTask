@@ -1,6 +1,6 @@
 ﻿@using Users.Ioc
 @using FinalTask.Models
-@{ if (!User.IsInRole("Admin"))
+@{ if (User.IsInRole("Admin"))
     {
         Response.Redirect("~/Pages/Allows");
     }
@@ -55,13 +55,26 @@
                     <td>@item.EMail</td>
                     <td>@item.Role</td>
                     <td>
-                        <form method="post">
-                            <a class="btn btn-sm btn-warning" href="~/Pages/UpdateAnalyst.cshtml?id=@item.Id">Edit</a>
-                            <input type="hidden" name="deleteAnalyst" value="@item.Id" />
-                            <button type="submit" id="button_value" class="btn btn-danger btn-sm">Delete</button>
-                        </form>
-                    </td>
-                </tr>
+                        @{if (item.Article != null)
+                            {
+                                foreach (var article in item.Article)
+                                {
+                            <td>@article.Id</td>
+                            <td>@article.Name</td>
+                            <td>@article.Image</td>
+                            <td>@article.Autor.Name</td>
+                            <td>@article.Content</td>
+                                    }
+                                }
+                            }</td>
+                        <td>
+                            <form method="post">
+                                <a class="btn btn-sm btn-warning" href="~/Pages/UpdateAnalyst.cshtml?id=@item.Id">Edit</a>
+                                <input type="hidden" name="deleteAnalyst" value="@item.Id" />
+                                <button type="submit" id="button_value" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
             }
           }
     </tbody>

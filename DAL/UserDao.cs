@@ -60,7 +60,7 @@ namespace FinalTask.DAL
             {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = string.Format("DELETE FROM[User] WHERE Id = '{0}'", id);
+                command.CommandText = string.Format("DELETE FROM[Users] WHERE Id = '{0}'", id);
                 connection.Open();
                 var reader = command.ExecuteReader();
                 try
@@ -93,7 +93,7 @@ namespace FinalTask.DAL
             {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "SELECT Id,Name,LastName,Email,(SELECT Login FROM [Logins] WHERE Id=LoginId) AS Login,(SELECT Password FROM [Passwords] WHERE Id=PasswordId) as Password,Photo,Birthday,RoleId FROM[User] ";
+                command.CommandText = "SELECT Id,Name,LastName,Email,Login,Password,Photo,Birthday,RoleId FROM[Users]";
                 connection.Open();
                 var reader = command.ExecuteReader();
                 try
@@ -130,7 +130,7 @@ namespace FinalTask.DAL
             {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = string.Format("SELECT [ID],[NAME],[LASTNAME],[EMAIL],[Login],[PASSWORD],[PHOTO],[BIRTHDAY],[AGE],[ROLEID]FROM[dbo].[User]WHERE Id ='{0}'",id);
+                command.CommandText = string.Format("SELECT [ID],[NAME],[LASTNAME],[EMAIL],[Login],[PASSWORD],[PHOTO],[BIRTHDAY],[AGE],[ROLEID]FROM[dbo].[Users]WHERE Id ='{0}'",id);
                 connection.Open();
                 var reader = command.ExecuteReader();
                 try 
@@ -186,14 +186,14 @@ namespace FinalTask.DAL
                 }
             }
         }
-        public User GetUserByLogin(string login)
+        public User GetByLogin(string login)
         {
             var user = new User();
             using (SqlConnection connection = new SqlConnection(_connection))
             {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = string.Format("SELECT Id,Name,LastName,Email,(SELECT Login FROM [Logins] WHERE Id=LoginId) AS Login,(SELECT Password FROM [Passwords] WHERE Id=PasswordId) AS Password,Photo,Birthday,RoleId FROM[User] WHERE LoginId=(SELECT Id FROM[Logins] WHERE Login='{0}')",login);
+                command.CommandText = string.Format("SELECT [ID],[NAME],[LASTNAME],[EMAIL],[Login],[PASSWORD],[PHOTO],[BIRTHDAY],[AGE],[ROLEID]FROM[dbo].[Users]WHERE Login ='{0}", login);
                 connection.Open();
                 var reader = command.ExecuteReader();
                 try
@@ -211,6 +211,84 @@ namespace FinalTask.DAL
                         user.Role = reader["roleid"] as string;
                     }
                     return user;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+
+        public List<string> GetLogins()
+        {
+            var logins = new List<string>();
+            using (SqlConnection connection = new SqlConnection(_connection))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "SELECT Login FROM[Users]";
+                connection.Open();
+                var reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        string login = reader["Login"] as string;
+                        logins.Add(login);
+                    }
+                    return logins;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+
+        public List<string> GetPasswords()
+        {
+            var passwords = new List<string>();
+            using (SqlConnection connection = new SqlConnection(_connection))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "SELECT Password FROM[Users]";
+                connection.Open();
+                var reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        string password = reader["Password"] as string;
+                        passwords.Add(password);
+                    }
+                    return passwords;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+
+        public List<string> GetEmails()
+        {
+            var emails = new List<string>();
+            using (SqlConnection connection = new SqlConnection(_connection))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "SELECT Email FROM[Users]";
+                connection.Open();
+                var reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        string email = reader["Email"] as string;
+                        emails.Add(email);
+                    }
+                    return emails;
                 }
                 catch (Exception ex)
                 {

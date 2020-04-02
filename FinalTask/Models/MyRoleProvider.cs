@@ -14,11 +14,11 @@ namespace FinalTask.Models
         public override bool IsUserInRole(string username, string roleName)
         {
             
-            return username == _userLogic.GetUserByLogin(username).Login&&roleName=="User";
+            return username == _userLogic.GetByLogin(username).Login&&roleName=="User";
         }
         public override string[] GetRolesForUser(string username)
         {
-            if (username == _userLogic.GetUserByLogin(username).Login) return new string[] { "User" };
+            if (username == _userLogic.GetByLogin(username).Login) return new string[] { "User" };
             else return new string[] { };
 
         }

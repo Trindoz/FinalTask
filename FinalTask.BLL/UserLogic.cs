@@ -36,9 +36,24 @@ namespace FinalTask.BLL
             return _userDao.GetById(id);
         }
 
-        public User GetUserByLogin(string login)
+        public User GetByLogin(string login)
         {
-            return _userDao.GetUserByLogin(login);
+            return _userDao.GetByLogin(login);
+        }
+
+        public List<string> GetEmails()
+        {
+            return _userDao.GetEmails();
+        }
+
+        public List<string> GetLogins()
+        {
+            return _userDao.GetLogins();
+        }
+
+        public List<string> GetPasswords()
+        {
+            return _userDao.GetPasswords();
         }
 
         public User Update(User user)

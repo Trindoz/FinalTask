@@ -14,6 +14,9 @@ namespace FinalTask.DAL.Interfaces
         User Update(User user);
         User GetById(int id);
         IEnumerable<User> GetAll();
-        User GetUserByLogin(string login);
+        User GetByLogin(string login);
+        List<string> GetLogins();
+        List<string> GetPasswords();
+        List<string> GetEmails();
     }
 }

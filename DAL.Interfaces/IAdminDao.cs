@@ -14,5 +14,7 @@ namespace DAL.Interfaces
         Admin Update(Admin admin);
         Admin GetById(int id);
         IEnumerable<Admin> GetAll();
+        List<string> GetLogins();
+        List<string> GetPasswords();
     }
 }

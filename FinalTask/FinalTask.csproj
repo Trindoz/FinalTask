@@ -129,13 +129,14 @@
     <Content Include="Pages\Users\ChangeProfileUser.cshtml" />
     <Content Include="Pages\Allows\SignAsAnalyst.cshtml" />
     <Content Include="Pages\Allows\SignUpAsAnalyst.cshtml" />
-    <Content Include="Pages\Admin\Analysts.cshtml" />
+    <Content Include="Pages\Allows\Analysts.cshtml" />
     <Content Include="Pages\UpdateAnalyst.cshtml" />
     <Content Include="Pages\Allows\GetUserLogins.cshtml" />
     <Content Include="Pages\Allows\SignOut.cshtml" />
     <Content Include="Layouts\_UserLayout.cshtml" />
     <Content Include="Layouts\_AnalystLayout.cshtml" />
     <Content Include="Layouts\_AdminLayout.cshtml" />
+    <Content Include="Pages\Allows\AddArticle.cshtml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />

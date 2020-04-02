@@ -52,9 +52,28 @@ namespace DAL
             }
         }
 
-        public bool AddArticle(int analystid, Article article)
+        public bool AddArticle(Article article)
         {
-            throw new NotImplementedException();
+            string commandText = "dbo.AddArticle";
+            using (SqlConnection connection= new SqlConnection(_connection))
+            {
+                SqlCommand command = new SqlCommand(commandText, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@name", article.Name);
+                command.Parameters.AddWithValue("@image", article.Image);
+                command.Parameters.AddWithValue("@content", article.Content);
+                command.Parameters.AddWithValue("@analystId", article.Autor.Id);
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
         }
 
         public bool Delete(int id)
@@ -64,7 +83,7 @@ namespace DAL
             {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = string.Format("DELETE FROM FinalTask.[dbo].[Analyst] WHERE Id='{0}'", id);
+                command.CommandText = string.Format("DELETE FROM FinalTask.[dbo].[Analysts] WHERE Id='{0}'", id);
                 connection.Open();
                 var reader = command.ExecuteReader();
                 try
@@ -79,7 +98,7 @@ namespace DAL
                         analyst.Password = reader["password"] as string;
                         analyst.Photo = reader["photo"] as string;
                         analyst.Birthday = (DateTime)reader["birthday"];
-                        analyst.Role = reader["roleid"] as string;
+                        analyst.Role = reader["roleid"] as string;                       
                     };
                     return true;
                 }
@@ -90,40 +109,40 @@ namespace DAL
             }
         }
 
-        public bool DeleteArticle(int analystid, Article article)
+        public bool DeleteArticle(Article article)
         {
             throw new NotImplementedException();
         }
-
         public IEnumerable<Analyst> GetAll()
         {
-            var analysts = new List<Analyst>();
+            var analysts = new List<Analyst>();        
             using (SqlConnection connection = new SqlConnection(_connection))
             {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = "SELECT [ID],[NAME],[LASTNAME],[EMAIL],[Login],[PASSWORD],[PHOTO],[BIRTHDAY],[AGE],[ROLEID]FROM[dbo].[Analyst]";
+                command.CommandText = "SELECT * FROM Analysts";
                 connection.Open();
                 var reader = command.ExecuteReader();
                 try
                 {
                     while (reader.Read())
-                    {
+                    {          
                         analysts.Add(new Analyst
                         {
-                            Id = (int)reader["id"],
-                            Name = reader["name"] as string,
+                            Id = (int)reader["Id"],
+                            Name = reader["Name"] as string,
                             LastName = reader["lastname"] as string,
                             EMail = reader["email"] as string,
                             Login = reader["login"] as string,
                             Password = reader["password"] as string,
                             Photo = reader["photo"] as string,
+                            Article = GetArticlesByAnalystId((int)reader["Id"]).ToList(),
                             Birthday = (DateTime)reader["birthday"],
                             Role = reader["roleid"] as string
-                        });
+                        }) ;
+                        
                     }
-
-                    return analysts;
+                    return analysts.Distinct();
                 }
                 catch (Exception ex)
                 {
@@ -132,6 +151,73 @@ namespace DAL
             }
         }
 
+        public IEnumerable<Article> GetArticles()
+        {
+            var articles = new List<Article>();
+            using (SqlConnection connection = new SqlConnection(_connection))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = "SELECT * FROM Articles";
+                connection.Open();
+                var reader = command.ExecuteReader();
+                try {
+                    while (reader.Read())
+                    {
+                        articles.Add(
+                                       new Article
+                                       {
+                                           Id = (int)reader["Id"],
+                                           Name = reader["Name"] as string,
+                                           Image = reader["Image"] as string,
+                                           Autor = GetById((int)reader["AnalystId"]),
+                                           Content = reader["Content"] as string,
+                                           Likes = (int)reader["Likes"],
+                                           DisLikes = (int)reader["Dislikes"]
+                                       });
+                    }
+                    return articles;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+        public IEnumerable<Article> GetArticlesByAnalystId(int id)
+        {
+            var articles = new List<Article>();
+            using (SqlConnection connection = new SqlConnection(_connection))
+            {
+                var command = connection.CreateCommand();
+                command.CommandType = CommandType.Text;
+                command.CommandText = string.Format("SELECT * FROM Articles Where AnalystId='{0}'", id);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        articles.Add(
+                                       new Article
+                                       {
+                                           Id = (int)reader["Id"],
+                                           Name = reader["Name"] as string,
+                                           Image = reader["Image"] as string,
+                                           Autor = GetById((int)reader["AnalystId"]),
+                                           Content = reader["Content"] as string,
+                                           Likes = (int)reader["Likes"],
+                                           DisLikes = (int)reader["Dislikes"]
+                                       });
+                    }
+                    return articles;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
         public Analyst GetById(int id)
         {
             var analyst = new Analyst();
@@ -139,7 +225,7 @@ namespace DAL
             {
                 var command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
-                command.CommandText = string.Format("SELECT [ID],[NAME],[LASTNAME],[EMAIL],[Login],[PASSWORD],[PHOTO],[BIRTHDAY],[AGE],[ROLEID]FROM[dbo].[Analyst]WHERE Id ='{0}'", id);
+                command.CommandText = string.Format("SELECT * FROM[dbo].[Analysts]WHERE Id ='{0}'", id);
                 connection.Open();
                 var reader = command.ExecuteReader();
                 try
@@ -154,6 +240,8 @@ namespace DAL
                         analyst.Password = reader["password"] as string;
                         analyst.Photo = reader["photo"] as string;
                         analyst.Birthday = (DateTime)reader["birthday"];
+                        analyst.Article = GetArticlesByAnalystId((int)reader["id"]).ToList();
+                        analyst.Rating = (int)reader["rating"]; 
                         analyst.Role = reader["roleid"] as string;
                     };
                     return analyst;
@@ -163,6 +251,26 @@ namespace DAL
                     throw new Exception(ex.Message);
                 }
             }
+        }
+
+        public Analyst GetByLogin(string login)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> GetEmails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> GetLogins()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> GetPasswords()
+        {
+            throw new NotImplementedException();
         }
 
         public Analyst Update(Analyst analyst)

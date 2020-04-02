@@ -13,8 +13,14 @@ namespace DAL.Interfaces
         bool Delete(int id);
         Analyst Update(Analyst analyst);
         Analyst GetById(int id);
+        Analyst GetByLogin(string login);
+        List<string> GetLogins();
+        List<string> GetPasswords();
+        List<string> GetEmails();
         IEnumerable<Analyst> GetAll();
-        bool AddArticle(int analystid, Article article);
-        bool DeleteArticle(int analystid, Article article);
+        bool AddArticle(Article article);
+        bool DeleteArticle(Article article);
+        IEnumerable<Article> GetArticles();
+        IEnumerable<Article> GetArticlesByAnalystId(int id);
     }
 }

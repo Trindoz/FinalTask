@@ -21,9 +21,9 @@ namespace FinalTask.BLL
             return _analystDao.Add(analyst);
         }
 
-        public bool AddArticle(int analystid, Article article)
+        public bool AddArticle(Article article)
         {
-            throw new NotImplementedException();
+            return _analystDao.AddArticle(article);
         }
 
         public bool Delete(int id)
@@ -31,7 +31,7 @@ namespace FinalTask.BLL
             return _analystDao.Delete(id);
         }
 
-        public bool DeleteArticle(int analystid, Article article)
+        public bool DeleteArticle(Article article)
         {
             throw new NotImplementedException();
         }
@@ -44,6 +44,21 @@ namespace FinalTask.BLL
         public Analyst GetById(int id)
         {
             return _analystDao.GetById(id);
+        }
+
+        public List<string> GetEmails()
+        {
+            return _analystDao.GetEmails();
+        }
+
+        public List<string> GetLogins()
+        {
+            return _analystDao.GetLogins();
+        }
+
+        public List<string> GetPasswords()
+        {
+            return _analystDao.GetPasswords();
         }
 
         public Analyst Update(Analyst analyst)
